@@ -1,0 +1,22 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  releaseName: external-dns
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: external-dns
+    version: 3.4.2
+  valuesFrom:
+    - secretKeyRef:
+        name: external-dns-helm-values
+  values:
+    domainFilters: ["starbs.net"]
+    policy: sync
+    aws:
+      credentials:
+        accessKey: AKIAXSZNSZEEBCKFZT4H
+    txtPrefix: starbs

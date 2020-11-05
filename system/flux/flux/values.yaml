@@ -1,0 +1,10 @@
+helmOperator:
+  create: false
+git:
+  url: "git@github.com:chipwolf/wordpress-flux"
+registry:
+  rps: 50
+  burst: 50
+syncGarbageCollection:
+  enabled: true
+  dry: false

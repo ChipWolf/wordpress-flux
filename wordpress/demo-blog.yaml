@@ -1,0 +1,20 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: demo-blog
+  namespace: wordpress
+spec:
+  releaseName: demo-blog
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: wordpress
+    version: 9.9.1
+  values:
+    ingress:
+      enabled: true
+      hostname: demo-blog.starbs.net
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+    wordpressBlogName: Demo Blog
+    wordpressPassword: password
